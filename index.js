@@ -13,17 +13,21 @@ const port = 3000;
 app.use(bodyParser.urlencoded({extended : true}));
 
 app.get("/", (req, res) => {
+    console.log("A get / request was here");
     res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get("/check", (req, res) => {
+    console.log("A get /check req was here");
     res.sendFile(__dirname + '/public/index.html');
 });
 
 app.post("/check", (req, res) => {
     if (req.body.password === "IamDipankar"){
+        console.log("Authentication successfull");
         res.sendFile(__dirname + '/public/secret.html');
     }else{
+        console.log("Authentication failed");
         res.sendFile(__dirname + '/public/wrong_pass.html');
     }
 });
